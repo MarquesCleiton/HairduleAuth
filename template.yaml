@@ -1,0 +1,64 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: HairduleAuth - Lambda de autenticação (login, refresh, logout)
+
+Globals:
+  Function:
+    Runtime: python3.13
+    Timeout: 10
+    MemorySize: 256
+    Environment:
+      Variables:
+        TABLE_NAME: HairduleTB
+        AUTH_JWT_SECRET_SSM: /hairdule/jwt/secret
+        TOKEN_EXP_MINUTES: 5
+        REFRESH_EXP_DAYS: 7
+        SERVICE_NAME: hairdule-auth
+Resources:
+  AuthFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/
+      Handler: app.handler
+      Description: Lambda responsável por autenticação JWT
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - Statement:
+            - Effect: Allow
+              Action:
+                - dynamodb:GetItem
+                - dynamodb:PutItem
+                - dynamodb:UpdateItem
+                - dynamodb:Query
+                - dynamodb:DeleteItem
+              Resource: 
+                - !Sub arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/HairduleTB
+                - !Sub arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/HairduleTB/index/*
+        - Statement:
+            - Effect: Allow
+              Action: ssm:GetParameter
+              Resource: !Sub arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/hairdule/jwt/secret
+      Events:
+        Login:
+          Type: HttpApi
+          Properties:
+            Path: /auth/login
+            Method: POST
+        Refresh:
+          Type: HttpApi
+          Properties:
+            Path: /auth/refresh
+            Method: POST
+        Logout:
+          Type: HttpApi
+          Properties:
+            Path: /auth/logout
+            Method: POST
+
+Outputs:
+  AuthFunctionName:
+    Description: Nome da Lambda Auth
+    Value: !Ref AuthFunction
+  AuthFunctionArn:
+    Description: ARN da função Lambda
+    Value: !GetAtt AuthFunction.Arn

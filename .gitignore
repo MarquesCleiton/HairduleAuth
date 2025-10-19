@@ -1,0 +1,100 @@
+# ===========================
+# 🧠 GERAL
+# ===========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
+*.tmp
+*.bak
+
+# ===========================
+# 🐍 PYTHON
+# ===========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+.eggs/
+*.egg
+.Python
+.env
+.venv
+venv/
+ENV/
+env/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ===========================
+# 🧪 TESTES E BUILD
+# ===========================
+.coverage
+.tox/
+htmlcov/
+.mypy_cache/
+pytest_cache/
+.pytest_cache/
+.cache/
+*.coverage
+.pyre/
+
+# ===========================
+# 🐳 DOCKER
+# ===========================
+docker-compose.override.yml
+*.pid
+*.sock
+logs/
+*.log
+*.out
+
+# ===========================
+# ☁️ AWS SAM / DEPLOY
+# ===========================
+.aws-sam/
+.aws/
+.aws-sam/build/
+.aws-sam/cache/
+samconfig.toml
+template-export*.yaml
+lambda.zip
+*.template
+*.zip
+
+# ===========================
+# 🔐 SEGURANÇA
+# ===========================
+# Variáveis de ambiente e credenciais
+.env
+.env.*
+*.pem
+*.key
+*.crt
+*.pfx
+*.json
+*.aws
+
+# ===========================
+# ⚙️ DEPENDÊNCIAS
+# ===========================
+node_modules/
+package-lock.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+__MACOSX/
+*.swp
+
+# ===========================
+# 🧩 LOCALSTACK / DYNAMODB LOCAL
+# ===========================
+*.db
+*.sqlite
+localstack/
+ddb-local/
+*.data
+*.json.backup
