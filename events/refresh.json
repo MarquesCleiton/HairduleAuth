@@ -1,0 +1,6 @@
+{
+  "version": "2.0",
+  "routeKey": "POST /auth/refresh",
+  "rawPath": "/auth/refresh",
+  "body": "{\"refresh_token\": \"abc123\"}"
+}

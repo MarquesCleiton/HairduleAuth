@@ -75,7 +75,6 @@ lambda.zip
 *.key
 *.crt
 *.pfx
-*.json
 *.aws
 
 # ===========================

@@ -1,0 +1,8 @@
+{
+  "pk": { "S": "USER#u1" },
+  "sk": { "S": "PROFILE" },
+  "email": { "S": "teste@exemplo.com" },
+  "passwordHash": { "S": "$2b$12$3X1m1t0vV1gH0tRrLbt8AOswUFi6aA5wVoz4uT5LrVJ4fG9iJp5fG" },
+  "status": { "S": "active" },
+  "name": { "S": "Cleiton" }
+}

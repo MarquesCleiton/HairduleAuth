@@ -1,0 +1,32 @@
+{
+  "TableName": "HairduleTB",
+  "BillingMode": "PAY_PER_REQUEST",
+  "AttributeDefinitions": [
+    { "AttributeName": "pk", "AttributeType": "S" },
+    { "AttributeName": "sk", "AttributeType": "S" },
+    { "AttributeName": "gsi1pk", "AttributeType": "S" },
+    { "AttributeName": "gsi1sk", "AttributeType": "S" },
+    { "AttributeName": "email", "AttributeType": "S" }
+  ],
+  "KeySchema": [
+    { "AttributeName": "pk", "KeyType": "HASH" },
+    { "AttributeName": "sk", "KeyType": "RANGE" }
+  ],
+  "GlobalSecondaryIndexes": [
+    {
+      "IndexName": "GSI1",
+      "KeySchema": [
+        { "AttributeName": "gsi1pk", "KeyType": "HASH" },
+        { "AttributeName": "gsi1sk", "KeyType": "RANGE" }
+      ],
+      "Projection": { "ProjectionType": "ALL" }
+    },
+    {
+      "IndexName": "GSI_EMAIL",
+      "KeySchema": [
+        { "AttributeName": "email", "KeyType": "HASH" }
+      ],
+      "Projection": { "ProjectionType": "ALL" }
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "version": "2.0",
+  "routeKey": "POST /auth/login",
+  "rawPath": "/auth/login",
+  "body": "{\"email\": \"teste@exemplo.com\", \"password\": \"123456\"}"
+}
